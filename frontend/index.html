@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="binary-bg"></div>
+  <canvas id="matrix-bg"></canvas>
   <!-- Background -->
   <div class="y2k-bg"></div>
 
@@ -29,4 +29,45 @@
   <script src="script.js"></script>
 </body>
 </html>
+<script>
+const canvas = document.getElementById('matrix-bg');
+const ctx = canvas.getContext('2d');
 
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.onresize = resize;
+
+const chars = "01010100110100100100101001010101011001010101";
+const fontSize = 16;
+const columns = Math.floor(window.innerWidth / fontSize);
+
+const drops = Array(columns).fill(1);
+
+function draw() {
+    // Trail fade (higher = softer)
+    ctx.fillStyle = "rgba(0, 0, 0, 0.07)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#0affc8";  // soft green/teal
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        // Random reset
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
