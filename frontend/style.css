@@ -1,42 +1,40 @@
 /* Base */
 body {
     margin: 0;
+    background: #050505;
     font-family: 'Montserrat', sans-serif;
-    background: #000;
-    color: #00eaff;
+    color: #d0e3ff;
     text-align: center;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-/* Glowing blurred background (abstract blue haze for effect) */
+/* Soft dark background */
 .y2k-bg {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 180vw;
-    height: 180vh;
-    background: radial-gradient(circle, #89caff55, #001a3a);
-    filter: blur(50px);
+    width: 200vw;
+    height: 200vh;
+    background: radial-gradient(circle, #0a0f1c, #000000);
     transform: translate(-50%, -50%);
-    z-index: -5;
-    animation: floaty 30s ease-in-out infinite;
+    z-index: -10;
 }
 
-@keyframes floaty {
-  0% { transform: translate(-50%, -50%) scale(1); }
-  100% { transform: translate(-48%, -52%) scale(1.2); }
+/* Logo image */
+.logo {
+    width: 140px;
+    margin-top: 40px;
+    opacity: 0.75;
+    filter: drop-shadow(0 0 10px #003b6a50);
 }
 
-/* Title spinning 3D hologram style */
+/* Rotating title */
 .spinning-title {
     font-size: 3rem;
-    margin-top: 40px;
-    color: #d9f3ff;
-    text-shadow: 
-        0 0 10px #00eaff,
-        0 0 20px #00eaff,
-        0 0 40px #007f9d;
-    animation: spin 6s linear infinite;
+    margin-top: 10px;
+    color: #cbd8ff;
+    font-weight: 700;
+    animation: spin 8s linear infinite;
 }
 
 @keyframes spin {
@@ -44,52 +42,46 @@ body {
     to   { transform: rotateY(360deg); }
 }
 
-/* Inputs */
+/* Text area */
 textarea {
     width: 60%;
     height: 150px;
-    background: rgba(0, 10, 20, 0.7);
-    backdrop-filter: blur(5px);
-    border: 2px solid #00eaff;
-    border-radius: 12px;
-    padding: 10px;
-    color: white;
-    margin-top: 20px;
+    background: #0d111a;
+    border: 1px solid #2a3b55;
+    border-radius: 10px;
+    padding: 12px;
+    color: #cfe6ff;
     font-size: 1rem;
     resize: none;
-    box-shadow: 0 0 10px #00eaff55;
+    margin-top: 20px;
 }
 
+/* Output box */
 #output {
-    white-space: pre-wrap;
     width: 60%;
+    background: #0d111a;
+    border: 1px solid #2a3b55;
+    border-radius: 10px;
+    white-space: pre-wrap;
     margin: 20px auto;
     padding: 15px;
-    background: rgba(0, 10, 20, 0.7);
-    border: 2px solid #00eaff55;
-    border-radius: 12px;
-    color: #b8f8ff;
+    color: #b5d4ff;
 }
 
-/* Y2K glowing button */
+/* Button */
 .y2k-btn {
-    margin-top: 10px;
-    padding: 12px 35px;
-    background: #000a12;
-    border: 2px solid #00eaff;
-    border-radius: 20px;
-    color: #00eaff;
-    font-size: 1.2rem;
+    margin-top: 12px;
+    padding: 10px 32px;
+    background: #0f1624;
+    border: 1px solid #2a3b55;
+    border-radius: 8px;
+    color: #cfe6ff;
+    font-size: 1.1rem;
     cursor: pointer;
-    box-shadow: 
-        0 0 10px #00eaffaa,
-        0 0 20px #00eaff55 inset;
     transition: 0.2s;
 }
 
 .y2k-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 
-        0 0 20px #00eaff,
-        0 0 35px #00eaff inset;
+    background: #172133;
+    transform: scale(1.05);
 }
