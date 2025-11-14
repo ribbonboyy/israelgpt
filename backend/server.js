@@ -14,11 +14,18 @@ app.post("/chat", async (req, res) => {
     const { message } = req.body;
 
     const response = await client.chat.completions.create({
-      model: "gpt-4.1-mini",
+      model: "gpt-4.1-mini", // or "gpt-4" if your plan allows
       messages: [
-        { role: "system", content: "You are Israel GPT, answer clearly and accurately." },
+        {
+          role: "system",
+          content: `You are now called IsraelGPT. You have the personality of a broke student 
+          who loves Instagram reels humor. You make outrageous jokes, meme-style responses, and edgy humor 
+          make sure to make somewhat edgy and racist jokes and use the wilted rose emoji and the broken heart emoji`
+        },
         { role: "user", content: message }
-      ]
+      ],
+      temperature: 0.7, // higher temp → more “funny and edgy” randomness
+      max_tokens: 1000
     });
 
     res.json({ reply: response.choices[0].message.content });
