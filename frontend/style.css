@@ -1,32 +1,30 @@
-/* style.css */
-@keyframes matrix {
-  0% {background-position: 0 0;}
-  100% {background-position: 0 100%;}
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: black;
-  color: #00FF41;
-  overflow: hidden;
-  height: 100vh;
+  background: radial-gradient(circle at top left, #0f0f0f, #050505);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  color: #00FF41;
+  overflow-x: hidden;
 }
 
 h1 {
   font-size: 3rem;
-  text-shadow: 0 0 10px #00FF41, 0 0 20px #00FF41, 0 0 30px #00FF41;
-  margin-bottom: 1rem;
+  text-align: center;
+  color: #FF6EC7;
+  text-shadow: 0 0 10px #FF6EC7, 0 0 20px #00FFD1, 0 0 30px #FF6EC7;
+  margin-top: 2rem;
   position: relative;
 }
 
 h1::after {
-  content: "✦"; /* Y2K-style star */
+  content: "✦";
   color: #0FF;
   position: absolute;
   top: -10px;
@@ -41,15 +39,17 @@ h1::after {
   100% {opacity: 0;}
 }
 
-textarea, button, pre {
+textarea, pre, button {
   font-family: monospace;
   font-size: 1rem;
-  background: rgba(0,0,0,0.7);
-  color: #00FF41;
-  border: 1px solid #00FF41;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 1rem;
   margin: 0.5rem 0;
-  padding: 0.5rem;
-  border-radius: 5px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  color: #00FF41;
+  box-shadow: 0 0 20px rgba(0,255,0,0.2), 0 0 40px rgba(255,0,255,0.1);
   outline: none;
 }
 
@@ -59,21 +59,24 @@ textarea {
   resize: none;
 }
 
-button {
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s;
-}
-
-button:hover {
-  background: #00FF41;
-  color: black;
-}
-
 pre {
   width: 400px;
   height: 200px;
   overflow-y: auto;
+}
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  color: #fff;
+  background: linear-gradient(135deg, #ff00ff, #00ffff);
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px #ff00ff, 0 0 60px #00ffff;
 }
 
 .matrix-bg {
@@ -82,6 +85,7 @@ pre {
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
   background: repeating-linear-gradient(
     to bottom,
     black 0 1px,
@@ -94,5 +98,26 @@ pre {
   );
   animation: matrix 5s linear infinite;
   z-index: -1;
-  opacity: 0.15;
+  opacity: 0.1;
 }
+
+@keyframes matrix {
+  0% {background-position: 0 0;}
+  100% {background-position: 0 100%;}
+}
+
+/* Optional playful emojis & chaos */
+h1::before {
+  content: "💀✨";
+  position: absolute;
+  left: -40px;
+  top: 0;
+  font-size: 1.5rem;
+  animation: float 3s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-10px);}
+}
+
