@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- Add this in your <head> -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <title>Israel GPT</title>
+
+  <!-- Font + CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <body>
-  <div class="matrix-bg"></div>
-  <script src="script.js"></script>
-  <h1>Israel GPT</h1>
+
+  <!-- Background -->
+  <div class="y2k-bg"></div>
+
+  <!-- HEADER -->
+  <h1 class="spinning-title">Israel GPT</h1>
+
+  <!-- CHAT UI -->
   <textarea id="input" placeholder="Ask something..."></textarea>
-  <button onclick="send()">Send</button>
+  <button onclick="send()" class="y2k-btn">Send</button>
   <pre id="output"></pre>
 
+  <!-- Effects -->
   <script src="script.js"></script>
 </body>
 </html>
