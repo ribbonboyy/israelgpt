@@ -8,17 +8,26 @@ body {
     overflow-x: hidden;
 }
 
-/* Soft dark background */
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.4; 
+    pointer-events: none;
+}
+
 .y2k-bg {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 200vw;
-    height: 200vh;
-    background: radial-gradient(circle, #0a0f1c, #000000);
-    transform: translate(-50%, -50%);
-    z-index: -10;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
 }
+
 
 /* Logo image */
 .logo {
@@ -85,18 +94,3 @@ textarea {
     background: #172133;
     transform: scale(1.05);
 }
-
-/* Subtle code rain background */
-#matrix-bg {
-    z-index: 9999 !important;
-    opacity: 1 !important;
-    background: black; /* temporary for debugging */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -11;
-    pointer-events: none;
-}
-
