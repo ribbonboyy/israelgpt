@@ -14,7 +14,7 @@ app.post("/chat", async (req, res) => {
     const { message } = req.body;
 
     const response = await client.chat.completions.create({
-      model: "gpt-4.1-mini", // or "gpt-4" if your plan allows
+      model: "gpt-4.1-nano", 
       messages: [
         {
           role: "system",
@@ -26,7 +26,7 @@ app.post("/chat", async (req, res) => {
         },
         { role: "user", content: message }
       ],
-      temperature: 0.8, // higher temp → more “funny and edgy” randomness
+      temperature: 0.8,
       max_tokens: 50
     });
 
