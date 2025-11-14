@@ -55,8 +55,6 @@ textarea {
     resize: none;
     margin-top: 20px;
 }
-
-/* Output box */
 #output {
     width: 60%;
     background: #0d111a;
@@ -66,7 +64,9 @@ textarea {
     margin: 20px auto;
     padding: 15px;
     color: #b5d4ff;
+    font-size: 18px;
 }
+
 
 /* Button */
 .y2k-btn {
