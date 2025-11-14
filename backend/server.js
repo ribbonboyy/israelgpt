@@ -24,7 +24,7 @@ app.post("/chat", async (req, res) => {
         },
         { role: "user", content: message }
       ],
-      temperature: 0.7, // higher temp → more “funny and edgy” randomness
+      temperature: 0.8, // higher temp → more “funny and edgy” randomness
       max_tokens: 1000
     });
 
