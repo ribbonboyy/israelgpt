@@ -86,39 +86,15 @@ textarea {
     transform: scale(1.05);
 }
 
-/* Subtle drifting 0s and 1s background */
-.binary-bg {
+/* Subtle code rain background */
+#matrix-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: -11;
+    opacity: 0.15; /* makes it soft and not aggressive */
     pointer-events: none;
-    overflow: hidden;
-    z-index: -9;
-    opacity: 0.08; /* keeps it subtle */
-    font-family: monospace;
-    color: #00ffea20; /* soft neon-ish teal */
-    animation: drift 20s linear infinite;
-    white-space: pre;
 }
 
-/* Generate repeating binary text */
-.binary-bg::before {
-    content:
-        "01001001 00100000 01100100 01101111 00100000 01100011 01101111 01100100 01100101 "
-        "01001001 00100000 01100100 01101111 00100000 01100011 01101111 01100100 01100101 "
-        "01001001 00100000 01100100 01101111 00100000 01100011 01101111 01100100 01100101 "
-        "01001001 00100000 01100100 01101111 00100000 01100011 01101111 01100100 01100101 ";
-    position: absolute;
-    top: -200px;
-    left: 0;
-    font-size: 22px;
-    line-height: 30px;
-}
-
-/* Slow downward drift */
-@keyframes drift {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(200px); }
-}
