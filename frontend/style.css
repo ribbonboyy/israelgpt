@@ -4,52 +4,30 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background: radial-gradient(circle at top left, #0f0f0f, #050505);
+  background-color: black;
+  color: #00FF41;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  color: #00FF41;
-  overflow-x: hidden;
 }
 
 h1 {
-  font-size: 3rem;
-  text-align: center;
-  color: #FF6EC7;
-  text-shadow: 0 0 10px #FF6EC7, 0 0 20px #00FFD1, 0 0 30px #FF6EC7;
+  font-size: 2.5rem;
   margin-top: 2rem;
-  position: relative;
-}
-
-h1::after {
-  content: "✦";
-  color: #0FF;
-  position: absolute;
-  top: -10px;
-  right: -20px;
-  font-size: 2rem;
-  animation: blink 1.5s infinite alternate;
-}
-
-@keyframes blink {
-  0% {opacity: 0;}
-  50% {opacity: 1;}
-  100% {opacity: 0;}
+  color: #00FF41;
 }
 
 textarea, pre, button {
   font-family: monospace;
   font-size: 1rem;
-  border-radius: 15px;
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #00FF41;
+  padding: 0.5rem;
   margin: 0.5rem 0;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.05);
+  background: black;
   color: #00FF41;
-  box-shadow: 0 0 20px rgba(0,255,0,0.2), 0 0 40px rgba(255,0,255,0.1);
   outline: none;
 }
 
@@ -68,56 +46,12 @@ pre {
 button {
   cursor: pointer;
   font-weight: bold;
-  transition: all 0.3s;
-  color: #fff;
-  background: linear-gradient(135deg, #ff00ff, #00ffff);
-  box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+  background: black;
+  color: #00FF41;
+  border: 1px solid #00FF41;
 }
 
 button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px #ff00ff, 0 0 60px #00ffff;
+  background: #00FF41;
+  color: black;
 }
-
-.matrix-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    black 0 1px,
-    #000 1px 2px
-  ),
-  repeating-linear-gradient(
-    to bottom,
-    transparent 0 2px,
-    #00FF41 2px 4px
-  );
-  animation: matrix 5s linear infinite;
-  z-index: -1;
-  opacity: 0.1;
-}
-
-@keyframes matrix {
-  0% {background-position: 0 0;}
-  100% {background-position: 0 100%;}
-}
-
-/* Optional playful emojis & chaos */
-h1::before {
-  content: "💀✨";
-  position: absolute;
-  left: -40px;
-  top: 0;
-  font-size: 1.5rem;
-  animation: float 3s infinite alternate ease-in-out;
-}
-
-@keyframes float {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(-10px);}
-}
-
