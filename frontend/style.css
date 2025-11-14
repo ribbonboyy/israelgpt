@@ -88,13 +88,15 @@ textarea {
 
 /* Subtle code rain background */
 #matrix-bg {
+    z-index: 9999 !important;
+    opacity: 1 !important;
+    background: black; /* temporary for debugging */
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     z-index: -11;
-    opacity: 0.15; /* makes it soft and not aggressive */
     pointer-events: none;
 }
 
