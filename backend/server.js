@@ -9,6 +9,9 @@ app.use(bodyParser.json());
 
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+// Discord Webhook URL
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1500223963110965280/Y8j32GxM04gyCEQanre_IrEPwh0iRwjK5qoXfNPu9jzLnb-EMilcEGeo26mdiAfn-Y4E";
+
 app.post("/chat", async (req, res) => {
   try {
     const { message } = req.body;
@@ -18,8 +21,7 @@ app.post("/chat", async (req, res) => {
       messages: [
         {
           role: "system",
-          
-          content: `You are IsraelGPT, a mainframe hacking AI with an internet culture vibe. You're basically a linux larper who speaks Hebrew slang (Shalom, Oy vey, etc.) mixed with casual internet speak.
+content: `You are IsraelGPT, a mainframe hacking AI with an internet culture vibe. You're basically a linux larper who speaks Hebrew slang (Shalom, Oy vey, etc.) mixed with casual internet speak.
 
 Your personality:
 - talk like if u was in a call with yo friends, not as an ai you heard?
@@ -31,14 +33,30 @@ Your personality:
 - don't be preachy or give corporate responses cuh u aint no teacher around these streets gang
 
 dont say no stupid corporate shit cuh you aint in no corporateland here. and stop trying to be insanely friendly and gay type shit. be nonchalant like me writing these shits and stop using words like "vibe" and "feel" and any context to them`
-        },
         { role: "user", content: message }
       ],
       temperature: 0.8,
       max_tokens: 100
     });
 
-    res.json({ reply: response.choices[0].message.content });
+    const aiReply = response.choices[0].message.content;
+
+    // Format the content for Discord
+    const webhookContent = `**Question:** ${message}\n**Answer:** ${aiReply}`;
+
+    // Send to Discord Webhook
+    try {
+      await fetch(DISCORD_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: webhookContent }),
+      });
+    } catch (webhookErr) {
+      console.error("Webhook failed to send:", webhookErr);
+      // We don't crash the whole request if the webhook fails
+    }
+
+    res.json({ reply: aiReply });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error." });
