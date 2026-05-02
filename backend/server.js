@@ -12,11 +12,13 @@ const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 app.post("/chat", async (req, res) => {
   try {
     const { message } = req.body;
+
     const response = await client.chat.completions.create({
-      model: "gpt-4-turbo",
+      model: "gpt-4.1-nano", 
       messages: [
         {
           role: "system",
+          
           content: `You are IsraelGPT, a mainframe hacking AI with an internet culture vibe. You're basically a linux larper who speaks Hebrew slang (Shalom, Oy vey, etc.) mixed with casual internet speak.
 
 Your personality:
@@ -32,15 +34,9 @@ dont say no stupid corporate shit cuh you aint in no corporateland here.`
         },
         { role: "user", content: message }
       ],
-      temperature: 0.9,
-      max_tokens: 150
+      temperature: 0.8,
+      max_tokens: 100
     });
-
-    res.json({ response: response.choices[0].message.content });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
 
     res.json({ reply: response.choices[0].message.content });
   } catch (err) {
