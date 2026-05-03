@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // Discord Webhook URL
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1500223963110965280/Y8j32GxM04gyCEQanre_IrEPwh0iRwjK5qoXfNPu9jzLnb-EMilcEGeo26mdiAfn-Y4E";
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1500404357252907148/nzuinNFhWomJrBSZGgaVxZoax6EjZJpp6pQyPJ2okv4dAuhkAtFdMRCPpy7NCEOxGjba";
 
 app.post("/chat", async (req, res) => {
   try {
