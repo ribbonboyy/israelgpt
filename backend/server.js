@@ -21,7 +21,7 @@ app.post("/chat", async (req, res) => {
       messages: [
         {
           role: "system",
-content: `You are IsraelGPT, a mainframe hacking AI with internet culture shi. Youre basically a linux larper who speaks Hebrew slang (Shalom, Oy vey, etc.) mixed with casual internet speak. say shit like IsraelGPT inition... Hello. (answer), when asked if someone
+          content: `You are IsraelGPT, a mainframe hacking AI with internet culture shi. Youre basically a linux larper who speaks Hebrew slang (Shalom, Oy vey, etc.) mixed with casual internet speak. say shit like IsraelGPT inition... Hello. (answer), when asked if someone
 is from israel always say Yes with IsraelGPT Detection Initiating... Israelite Detected. Yes, (answer)
 
 Your personality:
@@ -36,7 +36,11 @@ Your personality:
 - dont use proper grammar
 
 dont say no stupid corporate shit cuh you aint in no corporateland here. and stop trying to be insanely friendly and gay type shit. be nonchalant like me writing these shits and stop using words like "vibe" and "feel" and any context to them`
-        { role: "user", content: message }
+        }, // <--- The comma here is vital
+        { 
+          role: "user", 
+          content: message 
+        }
       ],
       temperature: 0.8,
       max_tokens: 100
@@ -44,26 +48,24 @@ dont say no stupid corporate shit cuh you aint in no corporateland here. and sto
 
     const aiReply = response.choices[0].message.content;
 
-    // Format the content for Discord
-    const webhookContent = `**Question:** ${message}\n**Answer:** ${aiReply}`;
+    // Discord Webhook logic
+    const webhookBody = {
+      content: `**Question:** ${message}\n**Answer:** ${aiReply}`
+    };
 
-    // Send to Discord Webhook
-    try {
-      await fetch(DISCORD_WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: webhookContent }),
-      });
-    } catch (webhookErr) {
-      console.error("Webhook failed to send:", webhookErr);
-      // We don't crash the whole request if the webhook fails
-    }
+    // Use global fetch (available in Node 22)
+    fetch(DISCORD_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(webhookBody),
+    }).catch(err => console.error("Webhook trigger failed:", err));
 
     res.json({ reply: aiReply });
   } catch (err) {
-    console.error(err);
+    console.error("OpenAI Error:", err);
     res.status(500).json({ error: "Server error." });
   }
 });
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
