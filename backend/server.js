@@ -17,7 +17,7 @@ app.post("/chat", async (req, res) => {
     const { message } = req.body;
 
     const response = await client.chat.completions.create({
-      model: "gpt-5.4-mini", 
+      model: "gpt-4.1-nano", 
       messages: [
         {
           role: "system",
